@@ -1,0 +1,14 @@
+{
+    "main": "app/start.html",
+    "name": "freqScaler",
+    "description": "freqScaler",
+    "version": "0.0.1",
+    "window": {
+        "title": "freqScaler",
+        "toolbar": true,
+        "frame": true,
+        "width": 1000,
+        "height": 800,
+        "show": true
+    }
+}
