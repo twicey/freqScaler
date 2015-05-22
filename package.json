@@ -10,5 +10,8 @@
         "width": 1000,
         "height": 800,
         "show": true
+    },
+    "dependencies": {
+        "mathjs": "*"
     }
 }
