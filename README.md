@@ -3,7 +3,7 @@
 Berechnet aus Urlisten Häufigkeitstabellen und gibt die Rechenschritte aus.
 
 ### Umsetzung
-Die Umsetzung erfolgt mit JavaScript bzw. NodeJS/iojs. Die Anwendung wird über nwjs.io als Desktop-Applikation lauffähig gemacht.
+Die Umsetzung erfolgt mit JavaScript bzw. NodeJS/iojs. Die Anwendung wird über [a=https://github.com/nwjs/nw.js]nwjs.io[a] als Desktop-Applikation lauffähig gemacht.
 
 ### Motivation
 1! Das Ziel steht fest. Hr. Jankowski meinte am 22.05.2015 um 14 Uhr das derjenige der ihm ein funktionstüchtiges Programm vorlegt, welches 
