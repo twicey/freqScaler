@@ -1,39 +1,59 @@
 <!DOCTYPE html>
 <html>
-<head lang="en">
+<head lang="de">
     <meta charset="UTF-8">
-    <script src="appLogic.js"></script>
+
+    <script src="vendor/jquery.min.js"></script>
+    <script src="vendor/js/bootstrap.min.js"></script>
+    <script src="vendor/bootbox.min.js"></script>
+
+    <link rel="stylesheet" href="vendor/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="vendor/css/bootstrap-theme.min.css"/>
+    <style>
+        p {
+            margin: 10px 0 10px 0;
+        }
+        td {
+            width: 33%;
+        }
+        .taskText {
+            color: #F8535A;
+            font-weight: bold;
+        }
+    </style>
     <title></title>
 </head>
 <body>
 
-$$x \ne 1$$
+<div class="container-fluid">
+    <div class="well" id="dateiAuswahlDialog">
+        <h3>Urliste auswählen</h3>
+        <p>Die Urliste sollte als Textdatei vorliegen, die einzelnen Werte sollten mit einem Zeilenumbruch getrennt sein.</p>
+        <input style="display:none;" id="loadFile" type="file" />
+        <div class="form-group">
+            <button class="btn btn-primary" onclick="chooseFile('#loadFile')">Datei auswählen</button>
+            <button class="btn btn-success" onclick="showCalculations()">Berechnen</button>
+        </div>
+    </div>
 
-<math xmlns="http://www.w3.org/1998/Math/MathML">
-    <mn>4</mn>
-    <mi>x</mi>
-    <mo>+</mo>
-    <mn>4</mn>
-    <mo>=</mo>
-    <mo>(</mo>
-    <mn>2</mn>
-    <mo>+</mo>
-    <mn>2</mn>
-    <mo>)</mo>
-    <mi>x</mi>
-    <mo>+</mo>
-    <mn>2</mn>
-    <mo>&middot;</mo>
-    <mn>2</mn>
-</math>
+    <div class="well" id="berechnungen">
+        <div id="n"></div>
+        <div id="Rx"></div>
+        <div id="m"></div>
+        <div id="d"></div>
+        <div id="epsilon"></div>
+        <div id="klassen"></div>
+        <div id="haufigkeitstabelle"></div>
+        <div id="grafik"></div>
+        <div id="xdach"></div>
+        <div id="sx"></div>
+        <div id="vx"></div>
+    </div>
+</div>
 
+<script src="appLogic.js"></script>
+<script src="lib/displayMathStuff.js"></script>
 
-<script type="text/javascript"
-        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    $(document).ready(function () {
-
-    })
-</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

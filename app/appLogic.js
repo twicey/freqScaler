@@ -7,36 +7,25 @@ var fs = require('fs');
 var gui = require('nw.gui');
 var util = require('util');
 var win = gui.Window.get();
-var $ = require('jquery');
 var math = require('mathjs');
 
 var f = require('./lib/frequencyScaling.js');
 
-win.showDevTools();
+//win.showDevTools();
 
 var appStart = new Date();
 
-// Durchlauf
+// Funktionen
 
-f.readRootlist('./testfiles/01.txt');
-f.getN();
-f.getM();
-f.getXmin();
-f.getXmax();
-f.getRx();
-f.getEpsilon();
-f.getClasses();
-f.getHj();
-f.getXbar();
-f.getStdDeviation();
-f.getVx();
-
-console.log(f.n, f.m, f.xmin, f.xmax, f.Rx, f.epsilon, f.d);
-
-console.log(f.classesList);
-console.log(f.freqScalingTable);
-console.log(f.hxSum);
-console.log("xbar", f.xbar);
-console.log("stddev", f.sx);
-console.log("varkoeff", f.vx);
-console.log("varkoeff in %", math.round(f.vx * 100, 4));
+function chooseFile(name) {
+    var chooser = document.querySelector(name);
+    chooser.addEventListener("change", function(evt) {
+        if (this.value != undefined && this.value.length > 0) {
+            if (fs.existsSync(this.value)) {
+                console.log(this.value);
+                f.readRootlist(this.value);
+            }
+        }
+    }, false);
+    chooser.click();
+}

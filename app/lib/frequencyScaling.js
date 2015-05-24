@@ -22,8 +22,10 @@ exports.vx = 0;
 
 exports.readRootlist = function (file) {
     if (fs.existsSync(file)) {
+        this.resetAllValues();
         var fContents = fs.readFileSync(file, 'UTF-8');
         this.valueArray = fContents.split('\n');
+        //todo file checking - int|float validation?!
         if (this.valueArray.length > 0) {
             for (var i = 0; i < this.valueArray.length; i++) {
                 this.valueArray[i] = parseFloat(this.valueArray[i].trim());
@@ -31,6 +33,23 @@ exports.readRootlist = function (file) {
         }
     }
 };
+
+exports.resetAllValues = function () {
+    this.valueArray = [];
+    this.classesList = [];
+    this.freqScalingTable = [];
+    this.hxSum = 0;
+    this.n = 0;
+    this.m = 0;
+    this.d = 0;
+    this.xmax = 0;
+    this.xmin = 0;
+    this.Rx = 0;
+    this.epsilon = 0;
+    this.xbar = 0;
+    this.sx = 0;
+    this.vx = 0;
+}
 
 exports.getN = function () {
     this.n = exports.valueArray.length;
@@ -130,14 +149,9 @@ exports.getStdDeviation = function () {
 };
 
 exports.getVx = function () {
-    this.vx = this.sx / this.xbar;
+    this.vx = math.round(this.sx / this.xbar, 6);
 };
 
-
-
-
-
-
-
-
-
+exports.getVxPercent = function () {
+    this.vxPercent = math.round(this.vx * 100,4);
+};
