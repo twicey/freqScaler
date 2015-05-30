@@ -3,7 +3,9 @@ In diesem Ordner müssen folgende JavaScript Libraries eingefügt werden:
 
 * bootbox.min.js
 * jquery.min.js
+* MathJax > *
 * js > boostrap.min.js
+* js > jquery.canvasjs.min.js
 * css > boostrap.min.css
 * css > boostrap-theme.min.css
 * fonts > glyphicons-halflings-regular.eot

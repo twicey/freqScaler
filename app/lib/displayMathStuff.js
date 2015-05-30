@@ -105,8 +105,8 @@ function showCalculations() {
             $('#xdach table tbody').append("<tr>" +
             "<td><math><mn>" + f.freqScalingTable[i][0] + "</mn></math></td>" +
             "<td><math><mn>" + f.freqScalingTable[i][1] + "</mn></math></td>" +
-            "<td class='warning'><math><mn>" + math.round((f.freqScalingTable[i][0] * f.freqScalingTable[i][1]),4) + "</mn></math></td>" +
-            "<td class='warning'><math><mn>" + math.round((math.pow(f.freqScalingTable[i][0] - f.xbar, 2) * f.freqScalingTable[i][1]),4) + "</mn></math></td>" +
+            "<td class='warning'><math><mn>" + math.round((f.freqScalingTable[i][0] * f.freqScalingTable[i][1]), 4) + "</mn></math></td>" +
+            "<td class='warning'><math><mn>" + math.round((math.pow(f.freqScalingTable[i][0] - f.xbar, 2) * f.freqScalingTable[i][1]), 4) + "</mn></math></td>" +
             "</tr>");
 
             sumXjxHj += (f.freqScalingTable[i][0] * f.freqScalingTable[i][1]);
@@ -137,7 +137,7 @@ function showCalculations() {
         ': <p>' +
         '<math><msub><mi>s</mi><mi>x</mi></msub><mo>=</mo><msqrt><mfrac><mrow><mn>' + difXjXbarxHj + '</mn></mrow>' +
         '<mrow><mn>' + (f.n - 1) + '</mn></mrow></mfrac></msqrt></math><br>' +
-        '<math><msub><mi>s</mi><mi>x</mi></msub><mo>=</mo><mn>' + f.sx +'</mn></msub></math>' +
+        '<math><msub><mi>s</mi><mi>x</mi></msub><mo>=</mo><mn>' + f.sx + '</mn></msub></math>' +
         '</p>');
         //////////////////////////////////////////
         f.getVx();
@@ -150,9 +150,22 @@ function showCalculations() {
         '<mn>' + f.xbar + '</mn></mfrac></math><br>' +
         '<math><msub><mi>v</mi><mi>x</mi></msub><mo>=</mo><mn>' + f.vx + '</mn><br>' +
         '<math><msub><mi>v</mi><mi>x</mi></msub><mo>=</mo><mn>' + f.vxPercent + '</mn><mo>%</mo></math>' +
-        '</p>')
+        '</p>');
+        /////////////////////////////////////////
+        $('#chart').html('<span class="taskText">10. Grafische Darstellung der Klassen:</span>' +
+        '<div style="height: 370px" id="chartPlot"></div>');
+        var chartData = {data: [{type: "column", dataPoints: []}]};
+        for (var i = 0; i < f.freqScalingTable.length; i++) {
+            chartData.data[0].dataPoints.push({
+                x: f.freqScalingTable[i][0],
+                y: f.freqScalingTable[i][1]
+            });
+        }
+        var chart = new CanvasJS.Chart("chartPlot", chartData);
+        chart.render();
 
-
+        /////////////////////////////////////////
+        /// Render Math
         MathJax.Hub.Typeset();
     } else {
         bootbox.alert('Es wurde noch keine Datei geladen.');

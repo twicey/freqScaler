@@ -30,7 +30,7 @@ exports.getEpsilonIncrementValue = .01;
 // Debug
 exports.getEpsilonLoops = 0;
 
-// Liest die übergeben Urliste als .txt Datei ein
+// Liest die übergebende Urliste als .txt Datei ein
 // und konvertiert die einzelnen Werte im this.valueArray
 exports.readRootlist = function (file) {
     if (fs.existsSync(file)) {
@@ -169,6 +169,7 @@ exports.getHj = function () {
     }
 };
 
+// Berechnet XQuer
 exports.getXbar = function () {
     var sumXjxHj = 0;
     for (var i = 0; i < this.m; i++) {
@@ -177,6 +178,7 @@ exports.getXbar = function () {
     this.xbar = math.round(sumXjxHj / this.n, 4);
 };
 
+// Berechnet die Standardabweichung
 exports.getStdDeviation = function () {
     var sumXjxXbar = 0;
     for (var i = 0; i < this.m; i++) {
@@ -185,14 +187,17 @@ exports.getStdDeviation = function () {
     this.sx = math.round(math.sqrt(sumXjxXbar / (this.n - 1)), 4);
 };
 
+// Berechnet den Variablitätskoeffizienten
 exports.getVx = function () {
     this.vx = math.round(this.sx / this.xbar, 6);
 };
 
+// Gibt den Variablitätskoeffizienten als Prozentwert aus
 exports.getVxPercent = function () {
     this.vxPercent = math.round(this.vx * 100, 4);
 };
 
+// Gibt die Anzahl der Nachkommastellen zurück
 exports.countFractionNumbers = function (number) {
     if (this.isFloat(number)) {
         if (number.toString().split('.').length == 2) {
@@ -205,10 +210,12 @@ exports.countFractionNumbers = function (number) {
     }
 };
 
+// Prüft auf Integer
 exports.isInt = function (n) {
     return Number(n) === n && n % 1 === 0;
 };
 
+// Prüft auf Fließkommazahlen
 exports.isFloat = function (n) {
     return n === Number(n) && n % 1 !== 0
 };
