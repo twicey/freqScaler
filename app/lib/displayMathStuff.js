@@ -2,7 +2,7 @@
  * Created by ErikDev on 23.05.2015.
  */
 
-
+var math = require('mathjs');
 
 function showCalculations() {
     if (f.valueArray.length > 0) {
@@ -41,9 +41,9 @@ function showCalculations() {
         '</p>');
         //////////////////////////////////////////
         f.getClasses();
-        $('#klassen').html('<span class="taskText">5. Klassen einteilen, Klassengrenzen festlegen wobei der Start bei ' +
-        '<math><msub><mi>x</mi><mn>min</mn></msub><mo>-</mo><mfrac><mrow><mi>&epsilon;</mi></mrow><mrow><mn>2</mn></mrow></mfrac></math> und das Ende der letzten Klasse bei ' +
-        '<math><msub><mi>x</mi><mn>max</mn></msub><mo>+</mo><mfrac><mrow><mi>&epsilon;</mi></mrow><mrow><mn>2</mn></mrow></mfrac></math> liegt. Außerdem den Klassenmittelpunkt ausrechnen ' +
+        $('#klassen').html('<span class="taskText">5. Klassen einteilen, Klassengrenzen festlegen wobei der Start bei (' +
+        '<math><msub><mi>x</mi><mn>min</mn></msub><mo>-</mo><mfrac><mrow><mi>&epsilon;</mi></mrow><mrow><mn>2</mn></mrow></mfrac></math>) und das Ende der letzten Klasse bei ' +
+        '(<math><msub><mi>x</mi><mn>max</mn></msub><mo>+</mo><mfrac><mrow><mi>&epsilon;</mi></mrow><mrow><mn>2</mn></mrow></mfrac></math>) liegt. Außerdem den Klassenmittelpunkt ausrechnen ' +
         '(<math><mi>Klassenanfang</mi><mo>&plus;</mo><mfrac><mrow><mi>d</mi></mrow><mrow><mn>2</mn></mrow></mfrac></math>)</span>');
 
         $('#klassen').append('<p></p><table class="table table-bordered">' +
@@ -62,7 +62,7 @@ function showCalculations() {
         }
         //////////////////////////////////////////
         f.getHj();
-        $('#haufigkeitstabelle').html('<span class="taskText">6. Häufigkeitstabelle aufstellen. Auzählen und Zuordnen der einzelnen Werte in die passenden Gruppen</span>' +
+        $('#haufigkeitstabelle').html('<span class="taskText">6. Häufigkeitstabelle aufstellen, auszählen und zuordnen der einzelnen Werte in die passenden Gruppen</span>' +
         '<p>' +
         '<table class="table table-bordered">' +
         '<thead><tr>' +
@@ -105,8 +105,8 @@ function showCalculations() {
             $('#xdach table tbody').append("<tr>" +
             "<td><math><mn>" + f.freqScalingTable[i][0] + "</mn></math></td>" +
             "<td><math><mn>" + f.freqScalingTable[i][1] + "</mn></math></td>" +
-            "<td class='warning'><math><mn>" + (f.freqScalingTable[i][0] * f.freqScalingTable[i][1]) + "</mn></math></td>" +
-            "<td class='warning'><math><mn>" + (Math.pow(f.freqScalingTable[i][0] - f.xbar, 2) * f.freqScalingTable[i][1]) + "</mn></math></td>" +
+            "<td class='warning'><math><mn>" + math.round((f.freqScalingTable[i][0] * f.freqScalingTable[i][1]),4) + "</mn></math></td>" +
+            "<td class='warning'><math><mn>" + math.round((math.pow(f.freqScalingTable[i][0] - f.xbar, 2) * f.freqScalingTable[i][1]),4) + "</mn></math></td>" +
             "</tr>");
 
             sumXjxHj += (f.freqScalingTable[i][0] * f.freqScalingTable[i][1]);
@@ -116,8 +116,8 @@ function showCalculations() {
         $('#xdach table tbody').append("<tr>" +
         "<td></td>" +
         "<td></td>" +
-        "<td class='warning'><math><mo>&sum;</mo><mo>=</mo><mn>" + sumXjxHj + "</mn></math></td>" +
-        "<td class='warning'><math><mo>&sum;</mo><mo>=</mo><mn>" + difXjXbarxHj + "</mn></math></td>" +
+        "<td class='warning'><math><mo>&sum;</mo><mo>=</mo><mn>" + math.round(sumXjxHj, 4) + "</mn></math></td>" +
+        "<td class='warning'><math><mo>&sum;</mo><mo>=</mo><mn>" + math.round(difXjXbarxHj, 4) + "</mn></math></td>" +
         "</tr>");
 
         $('#xdach').append('' +
@@ -148,8 +148,8 @@ function showCalculations() {
         '<p>' +
         '<math><msub><mi>v</mi><mi>x</mi></msub><mo>=</mo><mfrac><mrow><mn>' + f.sx + '</mn></mrow>' +
         '<mn>' + f.xbar + '</mn></mfrac></math><br>' +
-        '<math><msub><mi>v</mi><mi>x</mi></msub><mo>=</mo><mn>' + f.vx + '</mn>' +
-        '<mo>&wedgeq;</mo><mn>' + f.vxPercent + '</mn><mo>%</mo></math>' +
+        '<math><msub><mi>v</mi><mi>x</mi></msub><mo>=</mo><mn>' + f.vx + '</mn><br>' +
+        '<math><msub><mi>v</mi><mi>x</mi></msub><mo>=</mo><mn>' + f.vxPercent + '</mn><mo>%</mo></math>' +
         '</p>')
 
 

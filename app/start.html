@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head lang="de">
     <meta charset="UTF-8">
@@ -6,6 +6,7 @@
     <script src="vendor/jquery.min.js"></script>
     <script src="vendor/js/bootstrap.min.js"></script>
     <script src="vendor/bootbox.min.js"></script>
+    <script src="vendor/MathJax/MathJax.js?config=MML_HTMLorMML-full"></script>
 
     <link rel="stylesheet" href="vendor/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="vendor/css/bootstrap-theme.min.css"/>
@@ -27,13 +28,10 @@
 
 <div class="container-fluid">
     <div class="well" id="dateiAuswahlDialog">
-        <h3>Urliste auswählen</h3>
-        <p>Die Urliste sollte als Textdatei vorliegen, die einzelnen Werte sollten mit einem Zeilenumbruch getrennt sein.</p>
         <input style="display:none;" id="loadFile" type="file" />
-        <div class="form-group">
-            <button class="btn btn-primary" onclick="chooseFile('#loadFile')">Datei auswählen</button>
-            <button class="btn btn-success" onclick="showCalculations()">Berechnen</button>
-        </div>
+        <div id="return">Bitte eine Urliste auswählen.</div>
+        <button class="btn btn-primary" onclick="chooseFile('#loadFile')">Urliste auswählen</button>
+        <button class="btn btn-success" onclick="showCalculations()" id="btnCalc" disabled="disabled">Berechnen</button>
     </div>
 
     <div class="well" id="berechnungen">
@@ -53,7 +51,5 @@
 
 <script src="appLogic.js"></script>
 <script src="lib/displayMathStuff.js"></script>
-
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
