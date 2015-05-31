@@ -7,6 +7,25 @@ var math = require('mathjs');
 function showCalculations() {
     if (f.valueArray.length > 0) {
         //////////////////////////////////////////
+        $('#raw').html('<div id="rawVals" class="well well-sm"></div>');
+        var rawContent = "";
+        for (var i = 0; i < f.valueArray.length; i++) {
+            if (i == 0){
+                rawContent += '<math><mn>' + f.valueArray[i] + '</mn>';
+            }
+            else if (i % 10 == 0) {
+                rawContent += '<mo linebreak=\'newline\'></mo><mn>' + f.valueArray[i] + '</mn>';
+            }
+            else if (i == f.valueArray.length - 1){
+                rawContent += '<mo>|</mo><mo> </mo><mn>' + f.valueArray[i] + '</mn></math>';
+            }
+            else{
+                rawContent += '<mo>|</mo><mo> </mo><mn>' + f.valueArray[i] + '</mn>';
+            }
+        }
+        $('#rawVals').html(rawContent);
+        console.log($('#rawVals').html());
+        //////////////////////////////////////////
         f.getN(); // n berechnen;
         $('#n').html('<span class="taskText">1. <math><mi>n</mi></math> berechnen</span>' +
         '<p><math><mi>n</mi><mo>=</mo><mn>' + f.n + '</mn></math></p>');
@@ -154,7 +173,7 @@ function showCalculations() {
         /////////////////////////////////////////
         $('#chart').html('<span class="taskText">10. Grafische Darstellung der Klassen:</span>' +
         '<div style="height: 370px" id="chartPlot"></div>');
-        var chartData = {data: [{type: "column", dataPoints: []}]};
+        var chartData = {backgroundColor: "rgba(0,0,0,0)",data: [{type: "column", dataPoints: []}]};
         for (var i = 0; i < f.freqScalingTable.length; i++) {
             chartData.data[0].dataPoints.push({
                 x: f.freqScalingTable[i][0],

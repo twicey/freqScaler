@@ -25,7 +25,7 @@ function chooseFile(name) {
                 console.log(this.value, "File loaded");
                 f.readRootlist(this.value);
                 $('#return').html('Datei: <i>' + this.value + '</i> wurde geladen.');
-                $('#n,#Rx,#m,#d,#epsilon,#klassen,#haufigkeitstabelle,#grafik,#xdach,#sx,#vx,#chart').html('');
+                $('#n,#Rx,#m,#d,#epsilon,#klassen,#haufigkeitstabelle,#grafik,#xdach,#sx,#vx,#chart,#raw').html('');
                 $('#btnCalc').removeAttr('disabled');
             }
         }
